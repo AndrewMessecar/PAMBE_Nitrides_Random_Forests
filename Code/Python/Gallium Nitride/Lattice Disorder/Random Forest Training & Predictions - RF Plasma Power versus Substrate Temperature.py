@@ -1,21 +1,25 @@
-# Andrew Messecar
+# Andrew S. Messecar
+# 2023
+
+# Script for training a random forest ensemble algorithm on GaN PAMBE synthesis data and
+# using it to make predictions across an entire processing space (see "Test Data Generation.py").
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import MinMaxScaler
-# from sklearn.preprocessing import StandardScaler
 from numpy import array, empty, reshape, arange
 import pandas as pd
 import seaborn as sb
 from pylab import title, show, xlabel, ylabel, savefig, figure, yticks, xticks
 
-Epitaxy = pd.read_csv(r'/home/garibasen/Documents/Data/WMU/Dropbox/S-squared/GaN_S2.csv')
+# Import the training data
+Epitaxy = pd.read_csv(r'# File Path of Training Data File')
 
-Test_Inputs = pd.read_csv(r'/home/garibasen/Documents/Data/WMU/Dropbox/S-squared/Mapping Data/Mapping_Data_Median.csv')
+# Import the test data for predictions (see "Test Data Generation.py" file)
+Test_Inputs = pd.read_csv(r'# File Path of Test Data File')')
 
 Training_Data = pd.DataFrame(Epitaxy, columns=['Substrate Temperature', 'RF Power', 'Ga Temperature', 'N2 Pressure', 'S2'])
 
 Map_Space = pd.DataFrame(Test_Inputs, columns=['Substrate Temperature', 'RF Power', 'Ga Temperature', 'N2 Pressure'])
-
 
 Training_Inputs = Training_Data.loc[:, ['Substrate Temperature', 'RF Power', 'Ga Temperature', 'N2 Pressure']]
 
@@ -29,10 +33,6 @@ Map_Space = scaler.transform(Map_Space)
 Predictor = RandomForestRegressor(max_features=5, random_state=42, n_estimators=245)
 
 Predictor.fit(Training_Inputs, Training_Outputs)
-
-# Map = empty([550 , 1000])
-
-# Parameter_Space = Map_Space.to_numpy()
 
 Map = Predictor.predict(Map_Space)
 
