@@ -2,7 +2,7 @@
 # 2023
 
 # Script for training a random forest ensemble algorithm on GaN PAMBE synthesis data and
-# using it to make predictions across an entire processing space (see "Test Data Generation.py").
+# using it to make predictions across an entire processing space (see "Mapping Data - GaN S2 - RF Plasma Power vs Substrate Temperature.py").
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import MinMaxScaler
@@ -14,7 +14,7 @@ from pylab import title, show, xlabel, ylabel, savefig, figure, yticks, xticks
 # Import the training data
 Epitaxy = pd.read_csv(r'# File Path of Training Data File')
 
-# Import the test data for predictions (see "Test Data Generation.py" file)
+# Import the test data for predictions (see "Mapping Data - GaN S2 - RF Plasma Power vs Substrate Temperature.py" file)
 Test_Inputs = pd.read_csv(r'# File Path of Test Data File')')
 
 Training_Data = pd.DataFrame(Epitaxy, columns=['Substrate Temperature', 'RF Power', 'Ga Temperature', 'N2 Pressure', 'S2'])
