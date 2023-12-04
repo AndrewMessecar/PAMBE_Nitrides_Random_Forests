@@ -1,4 +1,4 @@
-A. S. Messecar, S.M. Durbin, R.A. Makin 2023
+A. S. Messecar, S. M. Durbin, R. A. Makin 2023
 
 This repository contains the training data and code used for the study published as "Machine learning-based investigation of optimal synthesis parameters for epitaxially-grown III-nitride semiconductors".
 
